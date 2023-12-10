@@ -25,7 +25,7 @@
     ],
     "paths": {
       "mocks": [
-        "./src/app/mocks",
+        "./src/app/mocks"
       ]
     }
   },
