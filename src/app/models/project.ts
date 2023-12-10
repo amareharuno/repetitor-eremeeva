@@ -1,19 +1,23 @@
 import {DateString} from "./base";
+import {ANCHOR} from "./navigation";
 
-interface PriceOption {
-  name: string;
-  description: string;
+export interface PriceOption {
+  title: string;
+  description?: string;
   amount: number;
 }
 
+export interface Section {
+  anchorId?: ANCHOR;
+  title?: string;
+  items?: string[];
+}
+
 export interface Project {
-  name: string;
-  format: "online" | "offline";
+  id: string;
+  title: string;
+  sections?: Section[];
   startDate: DateString;
   endDate: DateString;
-  program: string[];
-  suitableFor: string[];
-  results: string[];
-  resources: string[];
-  priceOptions: PriceOption[];
+  offer: PriceOption[];
 }

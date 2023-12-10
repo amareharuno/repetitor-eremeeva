@@ -1,0 +1,10 @@
+<main *ngIf="_project$ | async as project" class="container p-4">
+    <header><h1>{{ project.title }}</h1></header>
+
+    <section *ngFor="let section of project.sections">
+        <h2>{{ section.title }}</h2>
+        <ul>
+            <li *ngFor="let item of section.items">{{ item }}</li>
+        </ul>
+    </section>
+</main>

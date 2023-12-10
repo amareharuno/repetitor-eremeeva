@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {BUTTON, introText, name, SECTIONS} from "./mocks";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,4 @@ import {BUTTON, introText, name, SECTIONS} from "./mocks";
   styleUrl: './app.component.less'
 })
 export class AppComponent {
-  readonly _title = name;
-  readonly _introText = introText;
-  readonly _buttons = BUTTON;
-  readonly _sections = SECTIONS;
 }
