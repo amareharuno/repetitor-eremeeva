@@ -36,7 +36,7 @@ export class LandingComponent {
 
   _navigateToSection(anchorLink: ANCHOR) {
     this.router.navigate([], {fragment: anchorLink});
-    document.getElementById(anchorLink)?.scrollIntoView({
+    document?.getElementById(anchorLink)?.scrollIntoView({
       // behavior: "smooth", // FIXME: doesn't work
       block: "center",
     });
