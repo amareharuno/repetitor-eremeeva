@@ -70,8 +70,8 @@
                         <div *ngFor="let project of _projects" class="card text-center m-2 col-md-2 flex-grow-1">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ project.title }}</h5>
-                                <p class="card-text mt-auto">{{ project.startDate | date }}
-                                    - {{ project.endDate | date }}</p>
+                                <p class="card-text mt-auto">{{ project.startDate | date : 'dd.MM.y' : 'ru-RU' }}
+                                    - {{ project.endDate | date : 'dd.MM.y' : 'ru-RU' }}</p>
                                 <a [routerLink]="['/project', project.id]"
                                    class="btn btn-primary">{{ _buttons.Details }}</a>
                             </div>

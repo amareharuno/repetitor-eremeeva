@@ -8,7 +8,7 @@ import {
   name,
   projects,
   socialNetworks
-} from "../../mocks";
+} from "mocks";
 import {headerNavigationItems} from "../../mocks/shared";
 import {Router} from "@angular/router";
 import {ANCHOR} from "../../models/navigation";
