@@ -8,7 +8,7 @@ import {
   name,
   projects,
   socialNetworks
-} from "../../mocks";
+} from "mocks";
 import {headerNavigationItems} from "../../mocks/shared";
 import {Router} from "@angular/router";
 import {ANCHOR} from "../../models/navigation";
@@ -36,7 +36,7 @@ export class LandingComponent {
 
   _navigateToSection(anchorLink: ANCHOR) {
     this.router.navigate([], {fragment: anchorLink});
-    document.getElementById(anchorLink)?.scrollIntoView({
+    document?.getElementById(anchorLink)?.scrollIntoView({
       // behavior: "smooth", // FIXME: doesn't work
       block: "center",
     });
