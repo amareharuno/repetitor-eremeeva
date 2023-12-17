@@ -1,36 +1,22 @@
 <div class="d-flex flex-column overflow-hidden min-vh-100 vh-100">
     <header>
-        <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <nav class="navbar navbar-expand-sm bg-body-tertiary">
             <div class="container-fluid">
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navBarControls"
-                        aria-controls="navBarControls"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0">
-                        <li *ngFor="let item of _navigationItems" class="nav-item">
-                            <a class="nav-link"
-                               routerLinkActive
-                               [routerLink]="'/main'"
-                               [fragment]="item.anchorLink"
-                               (click)="_navigateToSection(item.anchorLink)"
-                            >
-                                {{ item.name }}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="navbar-nav me-auto my-2 my-lg-0">
+                    <li *ngFor="let item of _navigationItems" class="nav-item">
+                        <a class="nav-link"
+                           routerLinkActive
+                           (click)="_navigateToAnchor(item.anchorLink)"
+                        >
+                            {{ item.name }}
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
     <main role="main"
-          class="scrollable-content flex-grow-1 overflow-auto"
+          class="flex-grow-1 overflow-auto"
           data-bs-spy="scroll">
         <div class="container p-4">
             <section *ngFor="let section of _sections"

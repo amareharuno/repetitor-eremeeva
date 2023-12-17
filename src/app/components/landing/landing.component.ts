@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   BUTTON,
   googleFormLink,
@@ -10,7 +10,7 @@ import {
   socialNetworks
 } from "mocks";
 import {headerNavigationItems} from "../../mocks/shared";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router, Scroll} from "@angular/router";
 import {ANCHOR} from "../../models/navigation";
 
 @Component({
@@ -18,7 +18,7 @@ import {ANCHOR} from "../../models/navigation";
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.less'
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
 
   protected readonly _title = name;
   protected readonly _sections = landingSections;
@@ -34,23 +34,24 @@ export class LandingComponent {
   constructor(private router: Router) {
   }
 
-  _navigateToSection(anchorLink: ANCHOR) {
-    this.router.navigate([], {fragment: anchorLink});
-    document?.getElementById(anchorLink)?.scrollIntoView({
-      // behavior: "smooth", // FIXME: doesn't work
-      block: "center",
-    });
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      let anchor = "";
 
-    // const timer = setTimeout(() => {
-    //
-    //   this.router.navigate([], {fragment: anchorLink});
-    //   console.log("anchorLink", anchorLink);
-    //   document.getElementById(anchorLink)?.scrollIntoView({
-    //     behavior: "smooth",
-    //     block: "center",
-    //   });
-    // }, 500);
-    //
-    // clearTimeout(timer);
+      if (event instanceof NavigationEnd) {
+        let fragmentIdx = event.urlAfterRedirects.lastIndexOf('#');
+        if (fragmentIdx >= 0 && fragmentIdx < event.urlAfterRedirects.length - 1) {
+          anchor = event.urlAfterRedirects.substring(fragmentIdx + 1);
+        }
+      } else if (event instanceof Scroll && event.anchor) {
+        anchor = event.anchor
+      }
+
+      document?.getElementById(anchor)?.scrollIntoView({behavior: "smooth"});
+    })
+  }
+
+  _navigateToAnchor(anchor: ANCHOR): void {
+    this.router.navigate([], {fragment: anchor});
   }
 }
