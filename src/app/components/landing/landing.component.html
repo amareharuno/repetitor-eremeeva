@@ -65,10 +65,9 @@
                         <p style="color: red">отзывы будут тут</p>
                     </section>
                     <section *ngSwitchCase="_anchorEnum.Questions" class="mt-3 d-flex flex-column">
-                        <p style="color: red">кнопка или форма связи</p>
                         <div class="d-flex justify-content-center align-items-center flex-grow-1">
                             <a *ngFor="let item of _socialNetworks"
-                               class="btn btn-secondary m-2"
+                               class="btn btn-light m-2"
                                type="button"
                                target="_blank"
                                rel="noopener noreferrer"
